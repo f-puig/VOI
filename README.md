@@ -160,7 +160,7 @@ The outputs from this function are equivalent to the ones obtained after applica
 write3rrr(filtered_NMR,'path','filename');
 ```
 The **input** variables are:
-*```filtered_NMR```*: the cube that contains the filtered variables. It corresponds to the output of the **voi3D.m** function with the same name (see section 8).
+*```filtered_NMR```*: the cube that contains the filtered variables. It corresponds to the output of the **voi3D.m** function with the same name (see **section 8**).
 *```path```*: the path that contains the original 3D NMR spectrum.
 *```filename```*: Name for the output **3rrr**-file. For example: ```'3rrr_new'```.
 
