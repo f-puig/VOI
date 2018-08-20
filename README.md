@@ -78,11 +78,11 @@ For example:
 ```
 output <- voi2D(NMR,6000,24)
 ```
-The **input** variables are the same as in the equivalent Matlab function. To import the NMR spectra to **R** environment, the rNMR (http://rnmr.nmrfam.wisc.edu/) software can be used. 
+The **input** variables are the same as in the equivalent Matlab function. To import the NMR spectra to **R** environment, the **rNMR** software (http://rnmr.nmrfam.wisc.edu/) can be used. 
 
-The **output** variable is a list that contains the following 4 elements.
+The **output** variable is a list that contains the following 4 elements:
 
-*```filtered_NMR```*: a 2D matrix without noise. It is equal to the input 'NMR' variable, but with zero values instead of noise. This denoised 2D NMR spectrum is also **compatible** with the **rNMR software**.
+*```filtered_NMR```*: a 2D matrix without noise. It is equal to the input 'NMR' variable, but with zero values instead of noise. This denoised 2D NMR spectrum is also **compatible** with the **rNMR** software.
 
 *```VOImatrix```*: a filtered matrix stored in a 3-row format. First row contains the intensity values kept, while the second and third rows contain the ppm chemical shifts for *f1* and *f2*, respectively.
 
