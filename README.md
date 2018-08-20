@@ -42,7 +42,7 @@ This function generates a 2D matrix of intensities that contains in the first ro
 For Varian files, a 2D NMR spectrum can be saved as a matrix in a *.csv* format in MestReNova (http://mestrelab.com). This *.csv* file can be converted into a matrix by simply writing load(*'filename.csv'*) on the command line.
 The resulting variable will be in the correct format for the *voi2D.m* function.
 
-## 2A. DENOISE A 2D NMR SPECTRUM (FOR MATLAB)##
+## 2A. DENOISE A 2D NMR SPECTRUM (FOR MATLAB) ##
 This is performed with the **voi2D.m** function.
 ```
 [filtered_NMR,VOImatrix,indexes,array_peaks]=voi2D(NMR,thresh,minvoi);
@@ -69,7 +69,7 @@ And the **output** variables are:
 
 *```array_peaks```*: a cell array containing as many cells as peaks. Each cell contains the variables that constitute every single peak.
 
-## 2B. DENOISE A 2D NMR SPECTRUM (FOR R)##
+## 2B. DENOISE A 2D NMR SPECTRUM (FOR R) ##
 This is performed with the **voi2D.R** function.
 ```
 output<-voi2D(NMR,thresh,minvoi)
