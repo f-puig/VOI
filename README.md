@@ -165,7 +165,7 @@ This is performed with the **voi3D.m** function.
 ```
 [filtered_NMR,VOIcube,indexes,array_peaks]=voi3D(NMR,thresh,minvoi,ppm1,ppm2,ppm3)
 ```
-In this case (unlike voi2D.m function), the intensity values and the ppm vectors are given in different variables.
+In this case (unlike **voi2D.m** function), the intensity values and the ppm vectors are given in different variables.
 If the 3D NMR spectrum was imported to Matlab using the **rbnmr3D.m** function, these variables (NMR, ppm1, ppm2, and ppm3) are contained in the fields Data, XAxis, YAxis, and ZAxis, respectively.
 So, we can just write the following:
 ```
