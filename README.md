@@ -1,11 +1,13 @@
 # VOI: Variables-Of-Interest #
 
-VOI is a small package to denoise multidimensional NMR spectra. Currently, it can be used to denoise 2D NMR and 3D NMR spectra.
+VOI is a small package to denoise multidimensional NMR spectra. Currently, it can be used to denoise 2D NMR and 3D NMR spectra. This package has been written in **MATLAB** programming language, but the main function from this package (VOI2D.m) has been also translated to **R**.
 VOI denoising strategy filters NMR variables based on two parameters defined by the user:
 1) The intensity **threshold**: The intensity of the selected variables will be *higher* than the established threshold. Otherwise, these variables will be discarded.
 2) The **minvoi**: This parameter represents the *minimal* number of connected variables that constitutes a peak. If the set of connected variables is smaller than the minvoi, the set of adjacent variables will be considered as noise and it will be discarded.
 
-This package is written in MATLAB programming language and it contains the following functions:
+The functions that can be donwloaded from this repository are the following:
+
+**For MATLAB**
 - rbnmr2D.m: to import 2rr Bruker files to Matlab environment.
 - read2rr.m: to import 2rr Bruker files to Matlab environment, and to prepare the data for VOI denosing.
 - rbnmr3D.m: to import 3rrr Bruker files to Matlab environment.
@@ -17,6 +19,9 @@ This package is written in MATLAB programming language and it contains the follo
 - voi2Df.m: to denoise and filter a single 2D phase-sensitive NMR spectrum.
 - voi3D.m: to denoise and filter a single 3D NMR spectrum.
 - filtervoi.m: to use an existent list of VOIs to filter one or more NMR spectra.
+
+**For R**
+- voi2D.R: to denoise and filter a single 2D NMR spectrum.
 
 Here are some examples on how these functions are applied:
 
@@ -37,7 +42,7 @@ This function generates a 2D matrix of intensities that contains in the first ro
 For Varian files, a 2D NMR spectrum can be saved as a matrix in a *.csv* format in MestReNova (http://mestrelab.com). This *.csv* file can be converted into a matrix by simply writing load(*'filename.csv'*) on the command line.
 The resulting variable will be in the correct format for the *voi2D.m* function.
 
-## 2. DENOISE A 2D NMR SPECTRUM ##
+## 2A. DENOISE A 2D NMR SPECTRUM (FOR MATLAB)##
 This is performed with the **voi2D.m** function.
 ```
 [filtered_NMR,VOImatrix,indexes,array_peaks]=voi2D(NMR,thresh,minvoi);
@@ -56,13 +61,34 @@ The **input** variables are:
 
 And the **output** variables are:
 
-*```filtered_NMR```*: the 2D matrix without noise. It is equal to the input 'NMR' variable, but with zero values instead of noise.
+*```filtered_NMR```*: a 2D matrix without noise. It is equal to the input 'NMR' variable, but with zero values instead of noise.
 
-*```VOImatrix```*: the filtered matrix stored in a 3-row format. First row contains the intensity values kept, while the second and third rows contain the ppm chemical shifts for *f1* and *f2*, respectively.
+*```VOImatrix```*: a filtered matrix stored in a 3-row format. First row contains the intensity values kept, while the second and third rows contain the ppm chemical shifts for *f1* and *f2*, respectively.
 
-*```indexes```*: the positions for all the selected pixels (pixel 1 starts counting at position [2,2]), since it is the first with an intensity value.
+*```indexes```*: the positions for all the selected pixels (the first pixel is at position [2,2], since it is the first with an intensity value).
 
-*```array_peaks```*: cell array containing as many cells as peaks. Each cell contains the variables that constitute every single peak.
+*```array_peaks```*: a cell array containing as many cells as peaks. Each cell contains the variables that constitute every single peak.
+
+## 2B. DENOISE A 2D NMR SPECTRUM (FOR R)##
+This is performed with the **voi2D.R** function.
+```
+output<-voi2D(NMR,thresh,minvoi)
+```
+For example:
+```
+output <- voi2D(NMR,6000,24)
+```
+The **input** variables are the same as in the equivalent Matlab function. To import the NMR spectra to **R** environment, the rNMR (http://rnmr.nmrfam.wisc.edu/) software can be used. 
+
+The **output** variable is a list that contains the following 4 elements.
+
+*```filtered_NMR```*: a 2D matrix without noise. It is equal to the input 'NMR' variable, but with zero values instead of noise. This denoised 2D NMR spectrum is also **compatible** with the **rNMR software**.
+
+*```VOImatrix```*: a filtered matrix stored in a 3-row format. First row contains the intensity values kept, while the second and third rows contain the ppm chemical shifts for *f1* and *f2*, respectively.
+
+*```indexes```*: the positions for all the selected pixels (the first pixel is at position [2,2], since it is the first with an intensity value).
+
+*```array_peaks```*: a list containing as many elements as peaks. Each elements contains the variables that constitute every single peak.
 
 ## 3. INTEGRATE ALL PEAKS FROM A 2D NMR SPECTRUM ##
 This is performed with the **integral2D.m** function.
@@ -72,7 +98,7 @@ This functions sums all the intensity values that are comprised within each clus
 ```
 The **input** variables are:
 
-*```array_peaks```*: cell array containing the list of VOIs. Each cell contains the VOIs for one cluster.
+*```array_peaks```*: a cell array containing the list of VOIs. Each cell contains the VOIs for one cluster.
 
 *```filtered_NMR```*: the denoised 2D NMR spectrum.
 
@@ -90,7 +116,7 @@ This functions searches, for every peak, the variable with the highest intensity
 ```
 The **input** variables are:
 
-*```array_peaks```*: cell array containing the list of VOIs. Each cell contains the VOIs for one cluster.
+*```array_peaks```*: a cell array containing the list of VOIs. Each cell contains the VOIs for one cluster.
 
 *```filtered_NMR```*: the denoised 2D NMR spectrum.
 
