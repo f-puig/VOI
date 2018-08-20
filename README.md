@@ -12,7 +12,8 @@ This package is written in MATLAB programming language and it contains the follo
 - write2rr.m: to write a 2rr binary file from a 2D NMR matrix.
 - write3rrr.m: to write a 3rrr binary file from a 3D NMR cube. 
 - voi2D.m: to denoise and filter a single 2D NMR spectrum.
-- integral2D.m: to integrate clusters from a 2D NMR spectrum.
+- integral2D.m: to integrate clusters from a voi-processed 2D NMR spectrum.
+- peakpicking2D.m: to pick peaks from a voi-processed 2D NMR spectrum.
 - voi2Df.m: to denoise and filter a single 2D phase-sensitive NMR spectrum.
 - voi3D.m: to denoise and filter a single 3D NMR spectrum.
 - filtervoi.m: to use an existent list of VOIs to filter one or more NMR spectra.
@@ -81,7 +82,25 @@ And the **output** variables are:
 
 *```integrals```*: the vector of integrals for the peaks defined by 'array_peaks' cell array.
 
-## 4. EXPORT A DENOISED 2D MATRIX TO TOPSPIN (CONVERSION TO 2RR) ##
+## 4. PICK PEAKS FROM A 2D NMR SPECTRUM ##
+This is performed with the **pickpeaking2D.m** function.
+This functions searches, for every peak, the variable with the highest intensity, and reports their associated chemical shifts in f1 and f2.
+```
+[peak_pos]=pickpeaking2D(array_peaks, filtered_NMR)
+```
+The **input** variables are:
+
+*```array_peaks```*: cell array containing the list of VOIs. Each cell contains the VOIs for one cluster.
+
+*```filtered_NMR```*: the denoised 2D NMR spectrum.
+
+These two variables are obtained after application of the voi2D.m function.
+
+And the **output** variables are:
+
+*```peak_pos```*: the list of chemical shifts associated to every peak (or cluster of VOIs). This variable contains as many rows as peaks, and two columns. The first column contains the chemical shifts in *f1*, while the second column contains the chemical shifts in *f2*.
+
+## 5. EXPORT A DENOISED 2D MATRIX TO TOPSPIN (CONVERSION TO 2RR) ##
 2D NMR files can be converted to 2rr Bruker files using the following function:
 ```
 write2rr(filtered_NMR,'path','filename');
@@ -98,8 +117,8 @@ This function creates a **2rr** file in the working directory.
 To identify the working directory, write ```pwd``` in the comand line.
 To open the VOI-processed 2D NMR on TopSpin, MestReNova or any other NMR Suite, replace the original **2rr** file by the new one.
 
-## 5. INTEGRATE SEVERAL 2D NMR SPECTRA USING THE SAME LIST OF VOIS ##
-To perform this simultaneous integration, the following workflow can be used. In this example, only two 2D NMR spectra are combined, but this methodology can be applied to analyze any number of spectra.
+## 6. DENOISE SEVERAL 2D NMR SPECTRA USING THE SAME LIST OF VOIS ##
+To perform this simultaneous denoising, the following workflow can be used. In this example, only two 2D NMR spectra are combined, but this methodology can be applied to analyze any number of spectra.
 1) Import the two 2D NMR spectra to MATLAB.
 ```
 NMR1 = read2rr('path1');
@@ -127,21 +146,21 @@ structureNMR.NMR2=NMR2;
 ```
 The **filtered_common** structure contains the denoised versions of NMR1 and NMR2 according to the list of VOIs from the indexes_common variable.
 
-## 6. DENOISE A **PHASE-SENSITIVE** 2D NMR SPECTRUM ##
+## 7. DENOISE A **PHASE-SENSITIVE** 2D NMR SPECTRUM ##
 This is performed with the **voi2Df.m** function.
 ```
 [filtered_NMR,VOImatrix,indexes,array_peaks]=voi2Df(NMR,threshpos,threshneg,minvoi)
 ```
 **VOI2Df.m** is the analogous function of VOI2D for phase-sensitive 2D spectra. The only difference to **voi2D.m** function is that two different thresholds (one positive and one negative) are used instead of one.
 
-## 7. IMPORT 3D NMR DATA ##
+## 8. IMPORT 3D NMR DATA ##
 Nowadays, this feature is only available for Bruker files, using the following instruction:
 ```
 NMR3D = rbnmr3D('path');
 ```
 This function generates an structure that contains all the data relative to the given NMR spectrum (the intensities, ppm vectors, and parameters relative to the acquisition and processing).
 
-## 8. DENOISE A **3D** NMR SPECTRUM ##
+## 9. DENOISE A **3D** NMR SPECTRUM ##
 This is performed with the **voi3D.m** function.
 ```
 [filtered_NMR,VOIcube,indexes,array_peaks]=voi3D(NMR,thresh,minvoi,ppm1,ppm2,ppm3)
@@ -154,13 +173,13 @@ So, we can just write the following:
 ```
 The outputs from this function are equivalent to the ones obtained after application of the **voi2D.m** function.
 
-## 9. EXPORT A DENOISED 3D CUBE TO TOPSPIN (CONVERSION TO 3RRR) ##
+## 10. EXPORT A DENOISED 3D CUBE TO TOPSPIN (CONVERSION TO 3RRR) ##
 3D NMR files can be converted to 3rrr Bruker files using the following function:
 ```
 write3rrr(filtered_NMR,'path','filename');
 ```
 The **input** variables are:
-*```filtered_NMR```*: the cube that contains the filtered variables. It corresponds to the output of the **voi3D.m** function with the same name (see **section 8**).
+*```filtered_NMR```*: the cube that contains the filtered variables. It corresponds to the output of the **voi3D.m** function with the same name (see **section 9**).
 *```path```*: the path that contains the original 3D NMR spectrum.
 *```filename```*: Name for the output **3rrr**-file. For example: ```'3rrr_new'```.
 
