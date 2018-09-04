@@ -1,10 +1,8 @@
 In this Markdown document, a workflow for the analysis of 2D NMR spectra in **R** is presented.
 
 This workflow includes:
-
-	**(i)** Importing of NMR spectra to Matlab
-	
-	**(ii)** 2D NMR spectra denoising
+**(i)** Importing of NMR spectra to Matlab
+**(ii)** 2D NMR spectra denoising
 
 
 
