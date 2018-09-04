@@ -31,5 +31,5 @@ elseif strcmp(contourlines,'no-lines')
     ylabel('f1')
 else
     display("Error setting the value of 'level' variable.")
-    display("It should be numeric or the string 'no-contour")
+    display("contourlines should be a numeric input or the string 'no-contour")
 end
