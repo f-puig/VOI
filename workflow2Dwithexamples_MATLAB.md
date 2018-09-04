@@ -2,17 +2,17 @@ In this Markdown document, a workflow for the analysis of 2D NMR spectra in Matl
 
 This workflow includes:
 
-	**(i)** Importing of NMR spectra to Matlab
+**(i)** Importing of NMR spectra to Matlab
 
-	**(ii)** 2D NMR spectra denoising
+**(ii)** 2D NMR spectra denoising
 
-	**(iii)** Peak picking
+**(iii)** Peak picking
 
-	**(iv)** Peak plotting
+**(iv)** Peak plotting
 
-	**(v)** Peak integration
+**(v)** Peak integration
 
-	**(vi)** Exporting of denoised 2D NMR
+**(vi)** Exporting of denoised 2D NMR
 
 Moreover, **some** functions have been implemented for the **simultaneous analysis of several 2D NMR** spectra at the same time.
 
@@ -114,7 +114,7 @@ If the ```countourlines``` parameters is an integer or it is left blank, then a 
 plot2D(filtered_NMR,30);
 ```
 
-![fig1](C:\Users\putxv\Desktop\voi per penjar\voi per penjar\functions2D\fig1.png)
+![fig1](https://github.com/f-puig/VOI/tree/master/figures/fig1.png)
 
 If the ```countourlines``` parameters is the string ```'no-lines'```, then no lines are drawn in the 2D NMR plot, and each peak is defined by one single-colored spot.
 
@@ -122,7 +122,7 @@ If the ```countourlines``` parameters is the string ```'no-lines'```, then no li
 plot2D(filtered_NMR,'no-lines');
 ```
 
-![fig2](C:\Users\putxv\Desktop\voi per penjar\voi per penjar\functions2D\fig2.png)
+![fig2](https://github.com/f-puig/VOI/tree/master/figures/fig2.png)
 
 This mode of plotting may result useful when the difference in scale among the resonances is very high.
 
@@ -231,7 +231,7 @@ plotpeaks(strNMR, array_peaks_common, list_peaks, thresh, ref)
 
 For instance, for the given dataset, an example of the array of peaks that can be obtained is shown below:
 
-![figpeaks](C:\Users\putxv\Desktop\voi per penjar\voi per penjar\functions2D\figpeaks.png)
+![figpeaks](https://github.com/f-puig/VOI/tree/master/figures/figpeaks.png)
 
 This figure was generated using the following command:
 
