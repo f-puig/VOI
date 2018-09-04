@@ -1,4 +1,4 @@
-In this Markdown document, a workflow for the analysis of 3D NMR spectra in Matlab is presented. This workflow includes the data import to Matlab, denoising, and export of denoised 2D NMR.
+In this Markdown document, a workflow for the analysis of 3D NMR spectra in Matlab is presented. This workflow includes the data import to Matlab, the denoising, and the export of denoised 2D NMR.
 
 All functions required for the analysis can be downloaded from this repository.
 
