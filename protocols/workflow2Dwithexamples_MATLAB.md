@@ -114,7 +114,7 @@ If the ```countourlines``` parameters is an integer or it is left blank, then a 
 plot2D(filtered_NMR,30);
 ```
 
-![fig1](https://github.com/f-puig/VOI/tree/master/figures/fig1.png)
+![Figure 1](https://github.com/f-puig/VOI/raw/master/figures/fig1.png "Figure 1")
 
 If the ```countourlines``` parameters is the string ```'no-lines'```, then no lines are drawn in the 2D NMR plot, and each peak is defined by one single-colored spot.
 
@@ -122,7 +122,7 @@ If the ```countourlines``` parameters is the string ```'no-lines'```, then no li
 plot2D(filtered_NMR,'no-lines');
 ```
 
-![fig2](https://github.com/f-puig/VOI/tree/master/figures/fig2.png)
+![Figure 2](https://github.com/f-puig/VOI/raw/master/figures/fig2.png "Figure 2")
 
 This mode of plotting may result useful when the difference in scale among the resonances is very high.
 
@@ -231,7 +231,7 @@ plotpeaks(strNMR, array_peaks_common, list_peaks, thresh, ref)
 
 For instance, for the given dataset, an example of the array of peaks that can be obtained is shown below:
 
-![figpeaks](https://github.com/f-puig/VOI/tree/master/figures/figpeaks.png)
+![Array of peaks](https://github.com/f-puig/VOI/raw/master/figures/figpeaks.png "Figure peaks")
 
 This figure was generated using the following command:
 
